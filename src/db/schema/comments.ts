@@ -13,7 +13,13 @@ export const commentsTable = pgTable('comments', {
   content: text().notNull(),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
-  postId: integer().references(() => postsTable.id),
-  userId: integer().references(() => usersTable.id),
-  parentId: integer().references((): AnyPgColumn => commentsTable.id),
+  postId: integer()
+    .notNull()
+    .references(() => postsTable.id, { onDelete: 'cascade' }),
+  userId: integer()
+    .notNull()
+    .references(() => usersTable.id, { onDelete: 'cascade' }),
+  parentId: integer().references((): AnyPgColumn => commentsTable.id, {
+    onDelete: 'cascade',
+  }),
 });
