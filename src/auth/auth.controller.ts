@@ -9,6 +9,12 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiCookieAuth,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import type { Request, Response } from 'express';
 import { AuthService } from './auth.service';
 import { REFRESH_COOKIE_NAME } from './auth.constants';
@@ -25,11 +31,13 @@ import type { JwtPayload } from './types';
  * Access-токен уходит в JSON-теле (клиент кладёт его в `Authorization`).
  * Refresh-токен — только в httpOnly cookie, JS его прочитать не может.
  */
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
+  @ApiOperation({ summary: 'Register and receive access token + refresh cookie' })
   async register(
     @Body() dto: RegisterDto,
     // passthrough: сами пишем cookie, тело ответа отдаёт NestJS как обычно.
@@ -42,6 +50,7 @@ export class AuthController {
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Login and receive access token + refresh cookie' })
   async login(
     @Body() dto: LoginDto,
     @Res({ passthrough: true }) res: Response,
@@ -54,6 +63,8 @@ export class AuthController {
   /** Берёт refresh из cookie, выдаёт новую пару токенов и обновляет cookie. */
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
+  @ApiCookieAuth('refreshToken')
+  @ApiOperation({ summary: 'Refresh token pair using refresh cookie' })
   async refresh(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
@@ -68,6 +79,7 @@ export class AuthController {
   /** Удаляет refresh-cookie. Access-токен клиент забывает сам. */
   @Post('logout')
   @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Clear refresh cookie' })
   logout(@Res({ passthrough: true }) res: Response) {
     clearRefreshCookie(res);
     return { success: true };
@@ -76,6 +88,8 @@ export class AuthController {
   /** Текущий пользователь. Без валидного access-токена guard вернёт 401. */
   @Get('me')
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Current user profile' })
   me(@CurrentUser() user: JwtPayload) {
     return this.authService.getProfile(user.sub);
   }
