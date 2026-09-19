@@ -4,49 +4,55 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Patch,
-  Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { FindUserQueryDto } from './dto/find-user-query.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserService } from './user.service';
 
 @ApiTags('user')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  @UseGuards(JwtAuthGuard) // create/update/delete — только с валидным access-токеном
-  @ApiBearerAuth()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
-  }
-
   @Get()
-  findAll() {
-    return this.userService.findAll();
+  @ApiOperation({ summary: 'Search users by username substring' })
+  findByUsername(@Query() query: FindUserQueryDto) {
+    return this.userService.findByUsername(query.username);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+  @ApiOperation({ summary: 'Get user by id' })
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.findOne(id);
   }
 
   @Patch(':id')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(+id, updateUserDto);
+  @ApiOperation({ summary: 'Update own profile' })
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @CurrentUser('sub') userId: number,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    return this.userService.update(id, userId, updateUserDto);
   }
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
+  @ApiOperation({ summary: 'Delete own account' })
+  remove(
+    @Param('id', ParseIntPipe) id: number,
+    @CurrentUser('sub') userId: number,
+  ) {
+    return this.userService.remove(id, userId);
   }
 }
