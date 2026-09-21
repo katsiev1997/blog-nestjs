@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { DRIZZLE } from '../db/db.module';
 import { CommentService } from './comment.service';
 
 describe('CommentService', () => {
@@ -6,7 +7,13 @@ describe('CommentService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [CommentService],
+      providers: [
+        CommentService,
+        {
+          provide: DRIZZLE,
+          useValue: {},
+        },
+      ],
     }).compile();
 
     service = module.get<CommentService>(CommentService);

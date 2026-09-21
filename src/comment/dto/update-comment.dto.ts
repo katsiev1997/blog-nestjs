@@ -1,4 +1,7 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { OmitType, PartialType } from '@nestjs/swagger';
 import { CreateCommentDto } from './create-comment.dto';
 
-export class UpdateCommentDto extends PartialType(CreateCommentDto) {}
+/** Body for PATCH /api/comment/:id — only content can change. */
+export class UpdateCommentDto extends PartialType(
+  OmitType(CreateCommentDto, ['postId', 'parentId'] as const),
+) {}
