@@ -1,4 +1,5 @@
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import cookieParser from 'cookie-parser';
@@ -6,15 +7,17 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const config = app.get(ConfigService);
 
   app.setGlobalPrefix('api');
 
   // Нужен, чтобы `req.cookies.refreshToken` был доступен в /api/auth/refresh.
   app.use(cookieParser());
 
-  // credentials: true — браузер может слать httpOnly cookie на этот API.
+  // Explicit origins required when credentials: true (cookies). Comma-separated list.
+  const corsOrigin = config.get<string>('CORS_ORIGIN', 'http://localhost:5173');
   app.enableCors({
-    origin: true,
+    origin: corsOrigin.split(',').map((origin) => origin.trim()),
     credentials: true,
   });
   app.useGlobalPipes(
@@ -38,6 +41,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('docs', app, document);
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(config.get<string>('PORT', '3000'));
 }
-bootstrap();
+void bootstrap();

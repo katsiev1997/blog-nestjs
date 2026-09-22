@@ -27,6 +27,7 @@ services:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/app
       JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-dev-access-secret}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev-refresh-secret}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
       NODE_ENV: production
     depends_on:
       - postgres

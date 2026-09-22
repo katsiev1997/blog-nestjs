@@ -37,7 +37,9 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  @ApiOperation({ summary: 'Register and receive access token + refresh cookie' })
+  @ApiOperation({
+    summary: 'Register and receive access token + refresh cookie',
+  })
   async register(
     @Body() dto: RegisterDto,
     // passthrough: сами пишем cookie, тело ответа отдаёт NestJS как обычно.
