@@ -16,3 +16,7 @@ agent-transcripts
 *.log
 .turbo
 .DS_Store
+frontend
+design
+.agents
+.cursor

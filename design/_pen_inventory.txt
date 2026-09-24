@@ -1,0 +1,4 @@
+get_app_state()
+execute({ input: "Get(n=>n.reusable&&Print(n.id,n.name))" })
+list_libraries()
+exit()

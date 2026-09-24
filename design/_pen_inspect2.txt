@@ -1,0 +1,6 @@
+execute({ input: "Print(Get(\"X:YKnjc\",{depth:2}))" })
+execute({ input: "Print(Get(\"X:C10zH\",{depth:2}))" })
+execute({ input: "Print(Get(\"X:tjjQe\",{depth:2}))" })
+execute({ input: "Print(Get(\"X:vbQN4\",{depth:2}))" })
+execute({ input: "Print(Get(\"X:VSnC2\",{depth:2}))" })
+exit()

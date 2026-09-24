@@ -1,0 +1,2410 @@
+{
+  "version": "2.19",
+  "children": [
+    {
+      "type": "frame",
+      "id": "fHirM",
+      "x": 0,
+      "y": 0,
+      "name": "AppHeaderGuest",
+      "reusable": true,
+      "width": 1440,
+      "height": 64,
+      "fill": "$X:--background",
+      "stroke": "$X:--border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "strokeAlignment": "inner",
+      "padding": [
+        0,
+        48
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "tmCR0",
+          "name": "Brand",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "dMGPd",
+              "name": "Logo",
+              "fill": "$X:--foreground",
+              "content": "Blog",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "JjccN",
+          "name": "Actions",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "SW4Py",
+              "type": "ref",
+              "ref": "X:3f2VW",
+              "name": "Login Link",
+              "descendants": {
+                "X:AeXMI": {
+                  "enabled": false
+                },
+                "X:UZfKV": {
+                  "content": "Log in"
+                }
+              }
+            },
+            {
+              "id": "p8Z6lp",
+              "type": "ref",
+              "ref": "X:VSnC2",
+              "name": "Register CTA",
+              "descendants": {
+                "X:8jVfJ": {
+                  "enabled": false
+                },
+                "X:8tnXG": {
+                  "content": "Sign up"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wV6Dl",
+      "x": 1500,
+      "y": 0,
+      "name": "AppHeaderAuth",
+      "reusable": true,
+      "width": 1440,
+      "height": 64,
+      "fill": "$X:--background",
+      "stroke": "$X:--border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "strokeAlignment": "inner",
+      "padding": [
+        0,
+        48
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "SZ7IG",
+          "name": "Left",
+          "gap": 32,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "ytinR",
+              "name": "Logo",
+              "fill": "$X:--foreground",
+              "content": "Blog",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "irMQA",
+              "name": "Nav",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "XyYvc",
+                  "type": "ref",
+                  "ref": "X:3f2VW",
+                  "name": "Nav Posts",
+                  "descendants": {
+                    "X:AeXMI": {
+                      "enabled": false
+                    },
+                    "X:UZfKV": {
+                      "content": "Posts"
+                    }
+                  }
+                },
+                {
+                  "id": "kv6yM",
+                  "type": "ref",
+                  "ref": "X:3f2VW",
+                  "name": "Nav Users",
+                  "descendants": {
+                    "X:AeXMI": {
+                      "enabled": false
+                    },
+                    "X:UZfKV": {
+                      "content": "Users"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jfgUt",
+          "name": "Right",
+          "gap": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "N2vnl",
+              "type": "ref",
+              "ref": "X:VSnC2",
+              "name": "New Post",
+              "descendants": {
+                "X:8jVfJ": {
+                  "enabled": true
+                },
+                "X:WNalu": {
+                  "icon": "plus"
+                },
+                "X:8tnXG": {
+                  "content": "New post"
+                }
+              }
+            },
+            {
+              "id": "B3rct",
+              "type": "ref",
+              "ref": "X:DpPVg",
+              "name": "User Avatar",
+              "width": 36,
+              "height": 36,
+              "descendants": {
+                "X:wVlpW": {
+                  "content": "AL",
+                  "fontSize": 12
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "x7svq",
+      "x": 0,
+      "y": 120,
+      "name": "PostCard",
+      "reusable": true,
+      "width": 720,
+      "fill": "$X:--card",
+      "cornerRadius": 8,
+      "stroke": "$X:--border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 24,
+      "children": [
+        {
+          "type": "frame",
+          "id": "JWTnp",
+          "name": "Meta",
+          "width": "fill_container",
+          "gap": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "MBfZQ",
+              "type": "ref",
+              "ref": "X:DpPVg",
+              "name": "Author Avatar",
+              "width": 32,
+              "height": 32,
+              "descendants": {
+                "X:wVlpW": {
+                  "content": "AL",
+                  "fontSize": 11
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "IX90D",
+              "name": "Meta Text",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "NR2Ag",
+                  "name": "Author",
+                  "fill": "$X:--foreground",
+                  "content": "Ada Lovelace",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "cYuGe",
+                  "name": "Date",
+                  "fill": "$X:--muted-foreground",
+                  "content": "Mar 12, 2026 · 5 min read",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "Tjf9U",
+          "name": "Title",
+          "fill": "$X:--foreground",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Notes on analytical engines",
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "VclKy",
+          "name": "Excerpt",
+          "fill": "$X:--muted-foreground",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "A short look at how early computing ideas still shape how we write software today — and what blogging can learn from them.",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "F2THt",
+          "name": "Footer",
+          "width": "fill_container",
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "k2T5a",
+              "type": "ref",
+              "ref": "X:WuUMk",
+              "name": "Comments Badge",
+              "descendants": {
+                "X:zHpCv": {
+                  "content": "12 comments"
+                }
+              }
+            },
+            {
+              "id": "I4pUh",
+              "type": "ref",
+              "ref": "X:3f2VW",
+              "name": "Read More",
+              "descendants": {
+                "X:AeXMI": {
+                  "enabled": false
+                },
+                "X:UZfKV": {
+                  "content": "Read more"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Mdged",
+      "x": 780,
+      "y": 120,
+      "name": "CommentItem",
+      "reusable": true,
+      "width": 640,
+      "gap": 12,
+      "padding": [
+        12,
+        0
+      ],
+      "children": [
+        {
+          "id": "f5RkiT",
+          "type": "ref",
+          "ref": "X:DpPVg",
+          "name": "Comment Avatar",
+          "width": 32,
+          "height": 32,
+          "descendants": {
+            "X:wVlpW": {
+              "content": "CB",
+              "fontSize": 11
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "DJacv",
+          "name": "Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "children": [
+            {
+              "type": "frame",
+              "id": "fkZ4y",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vjgrS",
+                  "name": "Author",
+                  "fill": "$X:--foreground",
+                  "content": "Charles Babbage",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "O2BFRK",
+                  "name": "Time",
+                  "fill": "$X:--muted-foreground",
+                  "content": "2h ago",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "dLxLC",
+              "name": "Content",
+              "fill": "$X:--foreground",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Fascinating connection — the difference engine was essentially a hardware compiler.",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "aAeNf",
+              "name": "Actions",
+              "gap": 4,
+              "children": [
+                {
+                  "id": "nDboP",
+                  "type": "ref",
+                  "ref": "X:3f2VW",
+                  "name": "Reply",
+                  "descendants": {
+                    "X:AeXMI": {
+                      "enabled": false
+                    },
+                    "X:UZfKV": {
+                      "content": "Reply",
+                      "fontSize": 12
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "CDxvZ",
+      "x": 1500,
+      "y": 120,
+      "name": "EmptyState",
+      "reusable": true,
+      "width": 480,
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 48,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "tftle",
+          "name": "Empty Icon",
+          "width": 40,
+          "height": 40,
+          "icon": "file-text",
+          "library": "lucide",
+          "fill": "$X:--muted-foreground"
+        },
+        {
+          "type": "text",
+          "id": "M50JK7",
+          "name": "Title",
+          "fill": "$X:--foreground",
+          "content": "No posts yet",
+          "textAlign": "center",
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "JUd7P",
+          "name": "Description",
+          "fill": "$X:--muted-foreground",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "When you publish your first post, it will show up here.",
+          "textAlign": "center",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "id": "c6Pxg",
+          "type": "ref",
+          "ref": "X:VSnC2",
+          "name": "Empty CTA",
+          "descendants": {
+            "X:8jVfJ": {
+              "enabled": false
+            },
+            "X:8tnXG": {
+              "content": "Create a post"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "B9W64R",
+      "x": 3020,
+      "y": 0,
+      "name": "login",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "padding": 48,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "XBKwU",
+          "type": "ref",
+          "ref": "X:pcGlv",
+          "name": "Login Card",
+          "width": 420,
+          "descendants": {
+            "X:CgJv7": {
+              "type": "frame",
+              "id": "t0CPeo",
+              "name": "Header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Z7PUY",
+                  "name": "Title",
+                  "fill": "$X:--foreground",
+                  "content": "Log in",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "jgr4A",
+                  "name": "Subtitle",
+                  "fill": "$X:--muted-foreground",
+                  "content": "Welcome back to Blog.",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            "X:frWPV": {
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 24,
+              "height": "fit_content",
+              "children": [
+                {
+                  "id": "rIGZd",
+                  "type": "ref",
+                  "ref": "X:1415a",
+                  "name": "Email Field",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:BX0XX": {
+                      "content": "Email"
+                    },
+                    "X:SDRKn": {
+                      "content": "ada@example.com"
+                    }
+                  }
+                },
+                {
+                  "id": "g3owm",
+                  "type": "ref",
+                  "ref": "X:1415a",
+                  "name": "Password Field",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:BX0XX": {
+                      "content": "Password"
+                    },
+                    "X:SDRKn": {
+                      "content": "••••••••"
+                    }
+                  }
+                }
+              ]
+            },
+            "X:bvhSM": {
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "height": "fit_content",
+              "children": [
+                {
+                  "id": "m0Aa54",
+                  "type": "ref",
+                  "ref": "X:VSnC2",
+                  "name": "Submit",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:8jVfJ": {
+                      "enabled": false
+                    },
+                    "X:8tnXG": {
+                      "content": "Log in"
+                    }
+                  }
+                },
+                {
+                  "id": "h61Hzk",
+                  "type": "ref",
+                  "ref": "X:3f2VW",
+                  "name": "Register Link",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:AeXMI": {
+                      "enabled": false
+                    },
+                    "X:UZfKV": {
+                      "content": "Create account"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "I7CbbO",
+      "x": 4540,
+      "y": 0,
+      "name": "register",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "padding": 48,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "Ypfu6",
+          "type": "ref",
+          "ref": "X:pcGlv",
+          "name": "Register Card",
+          "width": 480,
+          "descendants": {
+            "X:CgJv7": {
+              "type": "frame",
+              "id": "g7oMI",
+              "name": "Header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SpUHX",
+                  "name": "Title",
+                  "fill": "$X:--foreground",
+                  "content": "Create account",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "g5uyBZ",
+                  "name": "Subtitle",
+                  "fill": "$X:--muted-foreground",
+                  "content": "Join Blog to publish and comment.",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            "X:frWPV": {
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "height": "fit_content",
+              "children": [
+                {
+                  "id": "GPEOG",
+                  "type": "ref",
+                  "ref": "X:1415a",
+                  "name": "Name Field",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:BX0XX": {
+                      "content": "Name"
+                    },
+                    "X:SDRKn": {
+                      "content": "Ada Lovelace"
+                    }
+                  }
+                },
+                {
+                  "id": "I8rB6",
+                  "type": "ref",
+                  "ref": "X:1415a",
+                  "name": "Age Field",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:BX0XX": {
+                      "content": "Age"
+                    },
+                    "X:SDRKn": {
+                      "content": "28"
+                    }
+                  }
+                },
+                {
+                  "id": "RhjLy",
+                  "type": "ref",
+                  "ref": "X:1415a",
+                  "name": "Email Field",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:BX0XX": {
+                      "content": "Email"
+                    },
+                    "X:SDRKn": {
+                      "content": "ada@example.com"
+                    }
+                  }
+                },
+                {
+                  "id": "k4PhE",
+                  "type": "ref",
+                  "ref": "X:1415a",
+                  "name": "Username Field",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:BX0XX": {
+                      "content": "Username"
+                    },
+                    "X:SDRKn": {
+                      "content": "ada"
+                    }
+                  }
+                },
+                {
+                  "id": "IIPAa",
+                  "type": "ref",
+                  "ref": "X:1415a",
+                  "name": "Password Field",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:BX0XX": {
+                      "content": "Password"
+                    },
+                    "X:SDRKn": {
+                      "content": "••••••••"
+                    }
+                  }
+                },
+                {
+                  "id": "e7JLHm",
+                  "type": "ref",
+                  "ref": "X:1415a",
+                  "name": "Avatar Field",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:BX0XX": {
+                      "content": "Avatar URL (optional)"
+                    },
+                    "X:SDRKn": {
+                      "content": "https://cdn.example.com/avatar.png"
+                    }
+                  }
+                }
+              ]
+            },
+            "X:bvhSM": {
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "height": "fit_content",
+              "children": [
+                {
+                  "id": "O7XWb",
+                  "type": "ref",
+                  "ref": "X:VSnC2",
+                  "name": "Submit",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:8jVfJ": {
+                      "enabled": false
+                    },
+                    "X:8tnXG": {
+                      "content": "Sign up"
+                    }
+                  }
+                },
+                {
+                  "id": "sIoYQ",
+                  "type": "ref",
+                  "ref": "X:3f2VW",
+                  "name": "Login Link",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:AeXMI": {
+                      "enabled": false
+                    },
+                    "X:UZfKV": {
+                      "content": "Already have an account? Log in"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "LOgQ3",
+      "x": 6060,
+      "y": 0,
+      "name": "posts-feed",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "KVujA",
+          "type": "ref",
+          "ref": "wV6Dl",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "SWe6Z",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            360
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "YbVWI",
+              "name": "Page Title",
+              "fill": "$X:--foreground",
+              "content": "Posts",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "sfedh",
+              "name": "Post List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "id": "Ga9ae",
+                  "type": "ref",
+                  "ref": "x7svq",
+                  "name": "PostCard",
+                  "width": "fill_container",
+                  "descendants": {
+                    "NR2Ag": {
+                      "content": "Ada Lovelace"
+                    },
+                    "cYuGe": {
+                      "content": "Mar 12, 2026 · 5 min read"
+                    },
+                    "Tjf9U": {
+                      "content": "Notes on analytical engines"
+                    },
+                    "VclKy": {
+                      "content": "A short look at how early computing ideas still shape how we write software today."
+                    }
+                  }
+                },
+                {
+                  "id": "J7tk9",
+                  "type": "ref",
+                  "ref": "x7svq",
+                  "name": "PostCard",
+                  "width": "fill_container",
+                  "descendants": {
+                    "NR2Ag": {
+                      "content": "Charles Babbage"
+                    },
+                    "cYuGe": {
+                      "content": "Mar 10, 2026 · 8 min read"
+                    },
+                    "Tjf9U": {
+                      "content": "Difference engines and compilers"
+                    },
+                    "VclKy": {
+                      "content": "Why mechanical calculation still informs how we think about pipelines and latencies."
+                    }
+                  }
+                },
+                {
+                  "id": "STquS",
+                  "type": "ref",
+                  "ref": "x7svq",
+                  "name": "PostCard",
+                  "width": "fill_container",
+                  "descendants": {
+                    "NR2Ag": {
+                      "content": "Grace Hopper"
+                    },
+                    "cYuGe": {
+                      "content": "Mar 8, 2026 · 4 min read"
+                    },
+                    "Tjf9U": {
+                      "content": "Writing for the next century"
+                    },
+                    "VclKy": {
+                      "content": "Clarity in documentation is a feature — not a nice-to-have afterthought."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "e9y4R2",
+              "type": "ref",
+              "ref": "X:U5noB",
+              "name": "Pagination",
+              "descendants": {
+                "X:VBg6X": {
+                  "children": [
+                    {
+                      "id": "RGmAG",
+                      "type": "ref",
+                      "ref": "X:tjjQe",
+                      "name": "Page 1",
+                      "descendants": {
+                        "X:JP14e": {
+                          "content": "1"
+                        }
+                      }
+                    },
+                    {
+                      "id": "IgueB",
+                      "type": "ref",
+                      "ref": "X:vbQN4",
+                      "name": "Page 2",
+                      "descendants": {
+                        "X:JP14e": {
+                          "content": "2"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CWmCJ",
+                      "type": "ref",
+                      "ref": "X:vbQN4",
+                      "name": "Page 3",
+                      "descendants": {
+                        "X:JP14e": {
+                          "content": "3"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "u14tJ",
+      "x": 7580,
+      "y": 0,
+      "name": "post-detail",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "jBrcQ",
+          "type": "ref",
+          "ref": "wV6Dl",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "pVU2W",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            280
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "KaKA0",
+              "name": "Author Meta",
+              "width": "fill_container",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "hrUfJ",
+                  "type": "ref",
+                  "ref": "X:DpPVg",
+                  "name": "Author Avatar",
+                  "width": 40,
+                  "height": 40,
+                  "descendants": {
+                    "X:wVlpW": {
+                      "content": "AL",
+                      "fontSize": 12
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "urrdb",
+                  "name": "Meta Text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Hmzj4",
+                      "name": "Author",
+                      "fill": "$X:--foreground",
+                      "content": "Ada Lovelace",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mj9B4",
+                      "name": "Date",
+                      "fill": "$X:--muted-foreground",
+                      "content": "Mar 12, 2026 · 5 min read",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "dwOPW",
+              "name": "Title",
+              "fill": "$X:--foreground",
+              "content": "Notes on analytical engines",
+              "fontFamily": "Inter",
+              "fontSize": 32,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "yd9Ze",
+              "name": "Cover Image",
+              "width": "fill_container",
+              "height": 180,
+              "fill": "$X:--muted",
+              "cornerRadius": 8
+            },
+            {
+              "type": "text",
+              "id": "X6RDaF",
+              "name": "Body",
+              "fill": "$X:--foreground",
+              "content": "The Analytical Engine weaves algebraic patterns just as the Jacquard loom weaves flowers and leaves. Early computing ideas still shape how we write software — and what blogging can learn from them about structure, reuse, and clarity.",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "MazNP",
+              "name": "Comments Heading",
+              "fill": "$X:--foreground",
+              "content": "Comments",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "Z9QJd",
+              "name": "Comment Thread",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "id": "DKIIj",
+                  "type": "ref",
+                  "ref": "Mdged",
+                  "name": "Comment Root",
+                  "width": "fill_container",
+                  "descendants": {
+                    "vjgrS": {
+                      "content": "Charles Babbage"
+                    },
+                    "O2BFRK": {
+                      "content": "2h ago"
+                    },
+                    "dLxLC": {
+                      "content": "Fascinating connection — the difference engine was essentially a hardware compiler."
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "DzOj8",
+                  "name": "Reply Wrap",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    40
+                  ],
+                  "children": [
+                    {
+                      "id": "KPbtO",
+                      "type": "ref",
+                      "ref": "Mdged",
+                      "name": "Comment Reply",
+                      "width": "fill_container",
+                      "descendants": {
+                        "vjgrS": {
+                          "content": "Ada Lovelace"
+                        },
+                        "O2BFRK": {
+                          "content": "1h ago"
+                        },
+                        "dLxLC": {
+                          "content": "Exactly — and that is why clear interfaces matter as much as clever mechanisms."
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zjOre",
+              "name": "Composer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "pHSCH",
+                  "type": "ref",
+                  "ref": "X:BjRan",
+                  "name": "Comment Input",
+                  "width": "fill_container",
+                  "descendants": {
+                    "X:a78kl": {
+                      "content": "Add a comment"
+                    },
+                    "X:S4qWY": {
+                      "content": "Share your thoughts…"
+                    }
+                  }
+                },
+                {
+                  "id": "tCQA4",
+                  "type": "ref",
+                  "ref": "X:VSnC2",
+                  "name": "Post Comment",
+                  "descendants": {
+                    "X:8jVfJ": {
+                      "enabled": false
+                    },
+                    "X:8tnXG": {
+                      "content": "Post comment"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "rtmEx",
+      "x": 9100,
+      "y": 0,
+      "name": "post-create",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "WdkHj",
+          "type": "ref",
+          "ref": "wV6Dl",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "Xl9aA",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            360
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "vIT6y",
+              "name": "Page Title",
+              "fill": "$X:--foreground",
+              "content": "Create post",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "600"
+            },
+            {
+              "id": "QBto0",
+              "type": "ref",
+              "ref": "X:1415a",
+              "name": "Title Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Title"
+                },
+                "X:SDRKn": {
+                  "content": "Post title"
+                }
+              }
+            },
+            {
+              "id": "gWTDB",
+              "type": "ref",
+              "ref": "X:BjRan",
+              "name": "Content Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:a78kl": {
+                  "content": "Content"
+                },
+                "X:pzw5I": {
+                  "height": 200
+                },
+                "X:S4qWY": {
+                  "content": "Write your post…"
+                }
+              }
+            },
+            {
+              "id": "i7pN1m",
+              "type": "ref",
+              "ref": "X:1415a",
+              "name": "Image Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Image URL (optional)"
+                },
+                "X:SDRKn": {
+                  "content": "https://cdn.example.com/cover.jpg"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "Tpc1W",
+              "name": "Actions",
+              "width": "fill_container",
+              "gap": 12,
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "AyYOn",
+                  "type": "ref",
+                  "ref": "X:C10zH",
+                  "name": "Cancel",
+                  "descendants": {
+                    "X:l8v2I": {
+                      "enabled": false
+                    },
+                    "X:poRwU": {
+                      "content": "Cancel"
+                    }
+                  }
+                },
+                {
+                  "id": "I0Lpt",
+                  "type": "ref",
+                  "ref": "X:VSnC2",
+                  "name": "Submit",
+                  "descendants": {
+                    "X:8jVfJ": {
+                      "enabled": false
+                    },
+                    "X:8tnXG": {
+                      "content": "Publish"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "PoMWt",
+      "x": 10620,
+      "y": 0,
+      "name": "post-edit",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "qaUJ8",
+          "type": "ref",
+          "ref": "wV6Dl",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "JRfr2",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            360
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "ucjV6",
+              "name": "Page Title",
+              "fill": "$X:--foreground",
+              "content": "Edit post",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "600"
+            },
+            {
+              "id": "rbteP",
+              "type": "ref",
+              "ref": "X:uHFal",
+              "name": "Title Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Title"
+                },
+                "X:SDRKn": {
+                  "content": "Notes on analytical engines",
+                  "fill": "$X:--foreground"
+                }
+              }
+            },
+            {
+              "id": "Bur2n",
+              "type": "ref",
+              "ref": "X:CrS3L",
+              "name": "Content Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:a78kl": {
+                  "content": "Content"
+                },
+                "X:pzw5I": {
+                  "height": 200
+                },
+                "X:S4qWY": {
+                  "content": "The Analytical Engine weaves algebraic patterns just as the Jacquard loom weaves flowers and leaves.",
+                  "fill": "$X:--foreground"
+                }
+              }
+            },
+            {
+              "id": "ibcqq",
+              "type": "ref",
+              "ref": "X:uHFal",
+              "name": "Image Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Image URL (optional)"
+                },
+                "X:SDRKn": {
+                  "content": "https://cdn.example.com/cover.jpg",
+                  "fill": "$X:--foreground"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "G0qfN",
+              "name": "Actions",
+              "width": "fill_container",
+              "gap": 12,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "id": "r8hGTC",
+                  "type": "ref",
+                  "ref": "X:YKnjc",
+                  "name": "Delete",
+                  "descendants": {
+                    "X:PqjlB": {
+                      "enabled": false
+                    },
+                    "X:NDadS": {
+                      "content": "Delete post"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "g3qLK",
+                  "name": "Right Actions",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "os8jC",
+                      "type": "ref",
+                      "ref": "X:C10zH",
+                      "name": "Cancel",
+                      "descendants": {
+                        "X:l8v2I": {
+                          "enabled": false
+                        },
+                        "X:poRwU": {
+                          "content": "Cancel"
+                        }
+                      }
+                    },
+                    {
+                      "id": "RBDgz",
+                      "type": "ref",
+                      "ref": "X:VSnC2",
+                      "name": "Submit",
+                      "descendants": {
+                        "X:8jVfJ": {
+                          "enabled": false
+                        },
+                        "X:8tnXG": {
+                          "content": "Save changes"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wQf8c",
+      "x": 12140,
+      "y": 0,
+      "name": "profile-me",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "sad3G",
+          "type": "ref",
+          "ref": "wV6Dl",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "d5mxZy",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            280
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "WFDKK",
+              "name": "Profile Hero",
+              "width": "fill_container",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "nMFX2",
+                  "type": "ref",
+                  "ref": "X:DpPVg",
+                  "name": "Avatar",
+                  "width": 80,
+                  "height": 80,
+                  "descendants": {
+                    "X:wVlpW": {
+                      "content": "AL",
+                      "fontSize": 24
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "Py9DA",
+                  "name": "Info",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "U80Cnu",
+                      "name": "Name",
+                      "fill": "$X:--foreground",
+                      "content": "Ada Lovelace",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "zSVKz",
+                      "name": "Username",
+                      "fill": "$X:--muted-foreground",
+                      "content": "@ada",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "OVLn1",
+                      "name": "Meta",
+                      "fill": "$X:--muted-foreground",
+                      "content": "28 · ada@example.com",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "id": "c14Wn",
+                  "type": "ref",
+                  "ref": "X:VSnC2",
+                  "name": "Edit Profile",
+                  "descendants": {
+                    "X:8jVfJ": {
+                      "enabled": false
+                    },
+                    "X:8tnXG": {
+                      "content": "Edit profile"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "EGf40",
+              "name": "Posts Heading",
+              "fill": "$X:--foreground",
+              "content": "Your posts",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "izLVY",
+              "name": "Post List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "pvOMH",
+                  "type": "ref",
+                  "ref": "x7svq",
+                  "name": "PostCard",
+                  "width": "fill_container",
+                  "descendants": {
+                    "NR2Ag": {
+                      "content": "Ada Lovelace"
+                    },
+                    "cYuGe": {
+                      "content": "Mar 12, 2026 · 5 min read"
+                    },
+                    "Tjf9U": {
+                      "content": "Notes on analytical engines"
+                    },
+                    "VclKy": {
+                      "content": "A short look at how early computing ideas still shape how we write software today."
+                    }
+                  }
+                },
+                {
+                  "id": "ToOVW",
+                  "type": "ref",
+                  "ref": "x7svq",
+                  "name": "PostCard 2",
+                  "width": "fill_container",
+                  "descendants": {
+                    "NR2Ag": {
+                      "content": "Ada Lovelace"
+                    },
+                    "cYuGe": {
+                      "content": "Feb 28, 2026 · 3 min read"
+                    },
+                    "Tjf9U": {
+                      "content": "On notation and clarity"
+                    },
+                    "VclKy": {
+                      "content": "Why the way we name things determines how long our systems last."
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "fjZUi",
+      "x": 13660,
+      "y": 0,
+      "name": "profile-edit",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "PUV7V",
+          "type": "ref",
+          "ref": "wV6Dl",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "YdsQY",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            32,
+            400
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "vITud",
+              "name": "Page Title",
+              "fill": "$X:--foreground",
+              "content": "Edit profile",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "600"
+            },
+            {
+              "id": "Hh7ht",
+              "type": "ref",
+              "ref": "X:uHFal",
+              "name": "Name Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Name"
+                },
+                "X:SDRKn": {
+                  "content": "Ada Lovelace",
+                  "fill": "$X:--foreground"
+                }
+              }
+            },
+            {
+              "id": "ncVT9",
+              "type": "ref",
+              "ref": "X:uHFal",
+              "name": "Age Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Age"
+                },
+                "X:SDRKn": {
+                  "content": "28",
+                  "fill": "$X:--foreground"
+                }
+              }
+            },
+            {
+              "id": "UawNG",
+              "type": "ref",
+              "ref": "X:uHFal",
+              "name": "Email Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Email"
+                },
+                "X:SDRKn": {
+                  "content": "ada@example.com",
+                  "fill": "$X:--foreground"
+                }
+              }
+            },
+            {
+              "id": "kj3cz",
+              "type": "ref",
+              "ref": "X:uHFal",
+              "name": "Username Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Username"
+                },
+                "X:SDRKn": {
+                  "content": "ada",
+                  "fill": "$X:--foreground"
+                }
+              }
+            },
+            {
+              "id": "qzucF",
+              "type": "ref",
+              "ref": "X:1415a",
+              "name": "Password Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "New password (optional)"
+                },
+                "X:SDRKn": {
+                  "content": "••••••••"
+                }
+              }
+            },
+            {
+              "id": "VZa7e",
+              "type": "ref",
+              "ref": "X:uHFal",
+              "name": "Avatar Field",
+              "width": "fill_container",
+              "descendants": {
+                "X:BX0XX": {
+                  "content": "Avatar URL"
+                },
+                "X:SDRKn": {
+                  "content": "https://cdn.example.com/avatar.png",
+                  "fill": "$X:--foreground"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "qtweW",
+              "name": "Actions",
+              "width": "fill_container",
+              "gap": 12,
+              "justifyContent": "end",
+              "children": [
+                {
+                  "id": "LWJuk",
+                  "type": "ref",
+                  "ref": "X:C10zH",
+                  "name": "Cancel",
+                  "descendants": {
+                    "X:l8v2I": {
+                      "enabled": false
+                    },
+                    "X:poRwU": {
+                      "content": "Cancel"
+                    }
+                  }
+                },
+                {
+                  "id": "D7Abxp",
+                  "type": "ref",
+                  "ref": "X:VSnC2",
+                  "name": "Save",
+                  "descendants": {
+                    "X:8jVfJ": {
+                      "enabled": false
+                    },
+                    "X:8tnXG": {
+                      "content": "Save changes"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "GNH2F",
+      "x": 15180,
+      "y": 0,
+      "name": "profile-user",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "V4Y3qF",
+          "type": "ref",
+          "ref": "wV6Dl",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "K3BhFR",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            280
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "PeOK6",
+              "name": "Profile Hero",
+              "width": "fill_container",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "bOIk6",
+                  "type": "ref",
+                  "ref": "X:DpPVg",
+                  "name": "Avatar",
+                  "width": 80,
+                  "height": 80,
+                  "descendants": {
+                    "X:wVlpW": {
+                      "content": "CB",
+                      "fontSize": 24
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "T6nnm",
+                  "name": "Info",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wTJ8n",
+                      "name": "Name",
+                      "fill": "$X:--foreground",
+                      "content": "Charles Babbage",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "y2O8b",
+                      "name": "Username",
+                      "fill": "$X:--muted-foreground",
+                      "content": "@babbage",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MAR0U",
+                      "name": "Meta",
+                      "fill": "$X:--muted-foreground",
+                      "content": "45 · charles@example.com",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "f9DYY",
+              "name": "Posts Heading",
+              "fill": "$X:--foreground",
+              "content": "Posts by Charles",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "N2iCQb",
+              "name": "Post List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "a73cq8",
+                  "type": "ref",
+                  "ref": "x7svq",
+                  "name": "PostCard",
+                  "width": "fill_container",
+                  "descendants": {
+                    "NR2Ag": {
+                      "content": "Charles Babbage"
+                    },
+                    "cYuGe": {
+                      "content": "Mar 10, 2026 · 8 min read"
+                    },
+                    "Tjf9U": {
+                      "content": "Difference engines and compilers"
+                    },
+                    "VclKy": {
+                      "content": "Why mechanical calculation still informs how we think about pipelines and latencies."
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "uUo7c",
+      "x": 16700,
+      "y": 0,
+      "name": "users-list",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$X:--background",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "T2hRDU",
+          "type": "ref",
+          "ref": "wV6Dl",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "bcCW8",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            280
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "RiAQ8",
+              "name": "Page Title",
+              "fill": "$X:--foreground",
+              "content": "Users",
+              "fontFamily": "Inter",
+              "fontSize": 28,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "K5EafS",
+              "name": "User List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PcfM4",
+                  "name": "User Row",
+                  "width": "fill_container",
+                  "fill": "$X:--card",
+                  "cornerRadius": 8,
+                  "stroke": "$X:--border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 16,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "B1xTje",
+                      "type": "ref",
+                      "ref": "X:DpPVg",
+                      "name": "Avatar",
+                      "width": 48,
+                      "height": 48,
+                      "descendants": {
+                        "X:wVlpW": {
+                          "content": "AL",
+                          "fontSize": 14
+                        }
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vaov8",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vdjnG",
+                          "name": "Name",
+                          "fill": "$X:--foreground",
+                          "content": "Ada Lovelace",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "WXq3V",
+                          "name": "Username",
+                          "fill": "$X:--muted-foreground",
+                          "content": "@ada",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "AsrtX",
+                      "name": "Meta",
+                      "fill": "$X:--muted-foreground",
+                      "content": "28 · 3 posts",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "id": "LJRL9",
+                      "type": "ref",
+                      "ref": "X:3f2VW",
+                      "name": "View",
+                      "descendants": {
+                        "X:AeXMI": {
+                          "enabled": false
+                        },
+                        "X:UZfKV": {
+                          "content": "View"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "W7TT9K",
+                  "name": "User Row",
+                  "width": "fill_container",
+                  "fill": "$X:--card",
+                  "cornerRadius": 8,
+                  "stroke": "$X:--border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 16,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "Z6xJrq",
+                      "type": "ref",
+                      "ref": "X:DpPVg",
+                      "name": "Avatar",
+                      "width": 48,
+                      "height": 48,
+                      "descendants": {
+                        "X:wVlpW": {
+                          "content": "CB",
+                          "fontSize": 14
+                        }
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zUAbD",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "RZELa",
+                          "name": "Name",
+                          "fill": "$X:--foreground",
+                          "content": "Charles Babbage",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mpTzU",
+                          "name": "Username",
+                          "fill": "$X:--muted-foreground",
+                          "content": "@babbage",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "wT7c7",
+                      "name": "Meta",
+                      "fill": "$X:--muted-foreground",
+                      "content": "45 · 2 posts",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "id": "hWHfs",
+                      "type": "ref",
+                      "ref": "X:3f2VW",
+                      "name": "View",
+                      "descendants": {
+                        "X:AeXMI": {
+                          "enabled": false
+                        },
+                        "X:UZfKV": {
+                          "content": "View"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "e4amT",
+                  "name": "User Row",
+                  "width": "fill_container",
+                  "fill": "$X:--card",
+                  "cornerRadius": 8,
+                  "stroke": "$X:--border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 16,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "jggRf",
+                      "type": "ref",
+                      "ref": "X:DpPVg",
+                      "name": "Avatar",
+                      "width": 48,
+                      "height": 48,
+                      "descendants": {
+                        "X:wVlpW": {
+                          "content": "GH",
+                          "fontSize": 14
+                        }
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "w824c",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n8PjjK",
+                          "name": "Name",
+                          "fill": "$X:--foreground",
+                          "content": "Grace Hopper",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "xnFmo",
+                          "name": "Username",
+                          "fill": "$X:--muted-foreground",
+                          "content": "@ghopper",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "g9uKQI",
+                      "name": "Meta",
+                      "fill": "$X:--muted-foreground",
+                      "content": "39 · 5 posts",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "id": "BRtvu",
+                      "type": "ref",
+                      "ref": "X:3f2VW",
+                      "name": "View",
+                      "descendants": {
+                        "X:AeXMI": {
+                          "enabled": false
+                        },
+                        "X:UZfKV": {
+                          "content": "View"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jF9QN",
+                  "name": "User Row",
+                  "width": "fill_container",
+                  "fill": "$X:--card",
+                  "cornerRadius": 8,
+                  "stroke": "$X:--border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 16,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "RFk1y",
+                      "type": "ref",
+                      "ref": "X:DpPVg",
+                      "name": "Avatar",
+                      "width": 48,
+                      "height": 48,
+                      "descendants": {
+                        "X:wVlpW": {
+                          "content": "AT",
+                          "fontSize": 14
+                        }
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "oEJNX",
+                      "name": "Text",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PFe9i",
+                          "name": "Name",
+                          "fill": "$X:--foreground",
+                          "content": "Alan Turing",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "TTM3c",
+                          "name": "Username",
+                          "fill": "$X:--muted-foreground",
+                          "content": "@turing",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "Kz54p",
+                      "name": "Meta",
+                      "fill": "$X:--muted-foreground",
+                      "content": "41 · 4 posts",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "id": "fYH74",
+                      "type": "ref",
+                      "ref": "X:3f2VW",
+                      "name": "View",
+                      "descendants": {
+                        "X:AeXMI": {
+                          "enabled": false
+                        },
+                        "X:UZfKV": {
+                          "content": "View"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "imports": {
+    "X": "pencil:shadcn.lib.pen"
+  },
+  "fileToken": "0ecac249-a9e7-4630-b240-52059f597798"
+}

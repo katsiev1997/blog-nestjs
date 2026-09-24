@@ -1,0 +1,3 @@
+execute({ input: "\nids=[]\nGet((n,c)=>{c.skipChildren();if([\"login\",\"register\",\"posts-feed\",\"post-detail\",\"post-create\",\"post-edit\",\"profile-me\",\"profile-edit\",\"profile-user\",\"users-list\"].includes(n.name)){ids.push(n.id);Print(n.name,n.id)}})\nExport(ids,\"png\",\"./design/exports\",{scale:1})\nPrint(\"exported\",ids.length)\n" })
+save()
+exit()
