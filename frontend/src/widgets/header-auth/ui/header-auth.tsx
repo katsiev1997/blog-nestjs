@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, NavLink, useNavigate } from "react-router";
 import { PlusIcon } from "lucide-react";
-import { AUTH_QUERIES, logout } from "@/shared/api";
+import { AUTH_QUERIES, disconnectChatSocket, logout } from "@/shared/api";
 import { clearAccessToken, useSession } from "@/shared/auth";
 import { getInitials } from "@/shared/lib/format";
 import { cn } from "@/shared/lib/utils";
@@ -22,6 +22,7 @@ export function AppHeaderAuth() {
   const logoutMutation = useMutation({
     mutationFn: logout,
     onSettled: async () => {
+      disconnectChatSocket();
       clearAccessToken();
       await queryClient.removeQueries({ queryKey: AUTH_QUERIES.me().queryKey });
       navigate("/login");
@@ -41,6 +42,9 @@ export function AppHeaderAuth() {
             </NavLink>
             <NavLink to="/users" className={navClass}>
               Users
+            </NavLink>
+            <NavLink to="/chats" className={navClass}>
+              Messages
             </NavLink>
           </nav>
         </div>

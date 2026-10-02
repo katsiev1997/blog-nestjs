@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
+import { LikeButton } from "@/shared/ui/like-button";
 import { UserAvatar, UserName } from "@/entities/user";
 
 type PostCardProps = {
@@ -43,7 +44,13 @@ export function PostCard({ post }: PostCardProps) {
         </CardTitle>
         <p className="text-muted-foreground text-sm leading-relaxed">{excerpt}</p>
       </CardContent>
-      <CardFooter className="justify-end">
+      <CardFooter className="justify-between">
+        <LikeButton
+          target="post"
+          id={post.id}
+          likeCount={post.likeCount ?? 0}
+          likedByMe={post.likedByMe ?? false}
+        />
         <Link
           to={`/posts/${post.id}`}
           className="text-sm font-medium hover:underline"

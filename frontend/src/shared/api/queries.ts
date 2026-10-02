@@ -1,5 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import { getMe } from "./auth";
+import { getChatMessages, getChats } from "./chat";
 import { getComments } from "./comment";
 import { getPost, getPosts } from "./post";
 import { getUser, searchUsers } from "./user";
@@ -51,5 +52,20 @@ export const USER_QUERIES = {
       queryKey: [...USER_QUERIES.all(), "detail", id],
       queryFn: () => getUser(id),
       enabled: Number.isFinite(id) && id > 0,
+    }),
+};
+
+export const CHAT_QUERIES = {
+  all: () => ["chats"] as const,
+  list: () =>
+    queryOptions({
+      queryKey: [...CHAT_QUERIES.all(), "list"],
+      queryFn: getChats,
+    }),
+  messages: (chatId: number, page: number) =>
+    queryOptions({
+      queryKey: [...CHAT_QUERIES.all(), "messages", chatId, page],
+      queryFn: () => getChatMessages(chatId, page),
+      enabled: Number.isFinite(chatId) && chatId > 0,
     }),
 };

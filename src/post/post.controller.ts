@@ -13,7 +13,9 @@ import {
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AiService } from '../ai/ai.service';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { OptionalCurrentUser } from '../auth/decorators/optional-current-user.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { OptionalJwtAuthGuard } from '../auth/guards/optional-jwt-auth.guard';
 import { CreatePostDto } from './dto/create-post.dto';
 import { FindPostsQueryDto } from './dto/find-posts-query.dto';
 import { GeneratePostDto } from './dto/generate-post.dto';
@@ -48,15 +50,23 @@ export class PostController {
   }
 
   @Get()
+  @UseGuards(OptionalJwtAuthGuard)
   @ApiOperation({ summary: 'List latest posts (10 per page)' })
-  findAll(@Query() query: FindPostsQueryDto) {
-    return this.postService.findAll(query.page ?? 1);
+  findAll(
+    @Query() query: FindPostsQueryDto,
+    @OptionalCurrentUser('sub') viewerId?: number,
+  ) {
+    return this.postService.findAll(query.page ?? 1, viewerId);
   }
 
   @Get(':id')
+  @UseGuards(OptionalJwtAuthGuard)
   @ApiOperation({ summary: 'Get post by id' })
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.postService.findOne(id);
+  findOne(
+    @Param('id', ParseIntPipe) id: number,
+    @OptionalCurrentUser('sub') viewerId?: number,
+  ) {
+    return this.postService.findOne(id, viewerId);
   }
 
   @Patch(':id')

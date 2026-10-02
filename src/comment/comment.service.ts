@@ -10,6 +10,7 @@ import { and, asc, eq } from 'drizzle-orm';
 import { DRIZZLE } from '../db/db.module';
 import type { DrizzleDB } from '../db/drizzle.types';
 import { commentsTable, postsTable } from '../db/schema';
+import { LikeService } from '../like/like.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
 
@@ -17,17 +18,28 @@ const COMMENTS_PAGE_SIZE = 10;
 
 type CommentRow = typeof commentsTable.$inferSelect;
 
+export type CommentWithLikes = CommentRow & {
+  likeCount: number;
+  likedByMe: boolean;
+};
+
 export type PaginatedComments = {
-  items: CommentRow[];
+  items: CommentWithLikes[];
   page: number;
   hasMore: boolean;
 };
 
 @Injectable()
 export class CommentService {
-  constructor(@Inject(DRIZZLE) private readonly db: DrizzleDB) {}
+  constructor(
+    @Inject(DRIZZLE) private readonly db: DrizzleDB,
+    private readonly likeService: LikeService,
+  ) {}
 
-  async create(userId: number, dto: CreateCommentDto): Promise<CommentRow> {
+  async create(
+    userId: number,
+    dto: CreateCommentDto,
+  ): Promise<CommentWithLikes> {
     await this.assertPostExists(dto.postId);
 
     if (dto.parentId != null) {
@@ -48,11 +60,15 @@ export class CommentService {
       throw new InternalServerErrorException('Failed to create comment');
     }
 
-    return comment;
+    return this.withLikes(comment, userId);
   }
 
   /** Oldest first for a given post, 10 per page. */
-  async findAll(postId: number, page = 1): Promise<PaginatedComments> {
+  async findAll(
+    postId: number,
+    page = 1,
+    viewerId?: number,
+  ): Promise<PaginatedComments> {
     await this.assertPostExists(postId);
 
     const offset = (page - 1) * COMMENTS_PAGE_SIZE;
@@ -66,23 +82,25 @@ export class CommentService {
       .offset(offset);
 
     const hasMore = rows.length > COMMENTS_PAGE_SIZE;
+    const items = hasMore ? rows.slice(0, COMMENTS_PAGE_SIZE) : rows;
 
     return {
-      items: hasMore ? rows.slice(0, COMMENTS_PAGE_SIZE) : rows,
+      items: await this.withLikesMany(items, viewerId),
       page,
       hasMore,
     };
   }
 
-  async findOne(id: number): Promise<CommentRow> {
-    return this.findOneOrFail(id);
+  async findOne(id: number, viewerId?: number): Promise<CommentWithLikes> {
+    const comment = await this.findOneOrFail(id);
+    return this.withLikes(comment, viewerId);
   }
 
   async update(
     id: number,
     userId: number,
     dto: UpdateCommentDto,
-  ): Promise<CommentRow> {
+  ): Promise<CommentWithLikes> {
     const existing = await this.findOneOrFail(id);
     this.assertOwner(existing, userId);
 
@@ -99,10 +117,10 @@ export class CommentService {
       throw new InternalServerErrorException('Failed to update comment');
     }
 
-    return comment;
+    return this.withLikes(comment, userId);
   }
 
-  async remove(id: number, userId: number): Promise<CommentRow> {
+  async remove(id: number, userId: number): Promise<CommentWithLikes> {
     const existing = await this.findOneOrFail(id);
     this.assertOwner(existing, userId);
 
@@ -115,7 +133,33 @@ export class CommentService {
       throw new InternalServerErrorException('Failed to delete comment');
     }
 
-    return comment;
+    return { ...comment, likeCount: 0, likedByMe: false };
+  }
+
+  private async withLikes(
+    comment: CommentRow,
+    viewerId?: number,
+  ): Promise<CommentWithLikes> {
+    const [enriched] = await this.withLikesMany([comment], viewerId);
+    return enriched!;
+  }
+
+  private async withLikesMany(
+    comments: CommentRow[],
+    viewerId?: number,
+  ): Promise<CommentWithLikes[]> {
+    const ids = comments.map((comment) => comment.id);
+    const counts = await this.likeService.getCommentLikeCounts(ids);
+    const liked =
+      viewerId != null
+        ? await this.likeService.getLikedCommentIds(viewerId, ids)
+        : new Set<number>();
+
+    return comments.map((comment) => ({
+      ...comment,
+      likeCount: counts.get(comment.id) ?? 0,
+      likedByMe: liked.has(comment.id),
+    }));
   }
 
   private async findOneOrFail(id: number): Promise<CommentRow> {

@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DRIZZLE } from '../db/db.module';
+import { LikeService } from '../like/like.service';
 import { PostService } from './post.service';
 
 describe('PostService', () => {
@@ -12,6 +13,13 @@ describe('PostService', () => {
         {
           provide: DRIZZLE,
           useValue: {},
+        },
+        {
+          provide: LikeService,
+          useValue: {
+            getPostLikeCounts: jest.fn(),
+            getLikedPostIds: jest.fn(),
+          },
         },
       ],
     }).compile();
