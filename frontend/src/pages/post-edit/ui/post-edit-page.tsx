@@ -4,8 +4,14 @@ import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router";
 import { z } from "zod";
-import { deletePost, POST_QUERIES, updatePost } from "@/shared/api";
+import {
+  deletePost,
+  generatePostDraft,
+  POST_QUERIES,
+  updatePost,
+} from "@/shared/api";
 import { useSession } from "@/shared/auth";
+import { getApiErrorMessage } from "@/shared/lib/api-error";
 import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
 import { Button } from "@/shared/ui/button";
 import {
@@ -34,6 +40,7 @@ export function PostEditPage() {
   const queryClient = useQueryClient();
   const { user } = useSession();
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [topic, setTopic] = useState("");
 
   const postQuery = useQuery({
     ...POST_QUERIES.detail(postId),
@@ -76,6 +83,17 @@ export function PostEditPage() {
     },
   });
 
+  const generateMutation = useMutation({
+    mutationFn: generatePostDraft,
+    onSuccess: (draft) => {
+      form.setValue("title", draft.title, { shouldDirty: true, shouldValidate: true });
+      form.setValue("content", draft.content, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+    },
+  });
+
   if (postQuery.isLoading) {
     return <Skeleton className="h-64 w-full" />;
   }
@@ -106,6 +124,42 @@ export function PostEditPage() {
         onSubmit={form.handleSubmit((values) => saveMutation.mutate(values))}
       >
         <FieldGroup>
+          <Field>
+            <FieldLabel htmlFor="edit-topic">Topic for AI</FieldLabel>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <Input
+                id="edit-topic"
+                value={topic}
+                onChange={(event) => setTopic(event.target.value)}
+                placeholder="e.g. Tips for learning NestJS"
+                disabled={generateMutation.isPending}
+              />
+              <Button
+                type="button"
+                variant="outline"
+                disabled={!topic.trim() || generateMutation.isPending}
+                onClick={() =>
+                  generateMutation.mutate({ topic: topic.trim() })
+                }
+              >
+                {generateMutation.isPending ? (
+                  <Spinner data-icon="inline-start" />
+                ) : null}
+                Generate with AI
+              </Button>
+            </div>
+          </Field>
+          {generateMutation.isError ? (
+            <Alert variant="destructive">
+              <AlertTitle>Generation failed</AlertTitle>
+              <AlertDescription>
+                {getApiErrorMessage(
+                  generateMutation.error,
+                  "Failed to generate draft. Please try again.",
+                )}
+              </AlertDescription>
+            </Alert>
+          ) : null}
           <Controller
             control={form.control}
             name="title"

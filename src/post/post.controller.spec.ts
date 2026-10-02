@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { AiService } from '../ai/ai.service';
 import { PostController } from './post.controller';
 import { PostService } from './post.service';
 
@@ -17,6 +18,12 @@ describe('PostController', () => {
             findOne: jest.fn(),
             update: jest.fn(),
             remove: jest.fn(),
+          },
+        },
+        {
+          provide: AiService,
+          useValue: {
+            generatePostDraft: jest.fn(),
           },
         },
       ],

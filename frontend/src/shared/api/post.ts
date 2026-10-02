@@ -1,6 +1,8 @@
 import { apiClient } from "./client";
 import type {
   CreatePostBody,
+  GeneratedPostDraft,
+  GeneratePostBody,
   Paginated,
   Post,
   UpdatePostBody,
@@ -33,5 +35,15 @@ export const updatePost = async (
 
 export const deletePost = async (id: number): Promise<Post> => {
   const { data } = await apiClient.delete<Post>(`/post/${id}`);
+  return data;
+};
+
+export const generatePostDraft = async (
+  body: GeneratePostBody,
+): Promise<GeneratedPostDraft> => {
+  const { data } = await apiClient.post<GeneratedPostDraft>(
+    "/post/generate",
+    body,
+  );
   return data;
 };

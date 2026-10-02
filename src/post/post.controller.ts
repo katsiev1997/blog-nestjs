@@ -11,17 +11,22 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AiService } from '../ai/ai.service';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreatePostDto } from './dto/create-post.dto';
 import { FindPostsQueryDto } from './dto/find-posts-query.dto';
+import { GeneratePostDto } from './dto/generate-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PostService } from './post.service';
 
 @ApiTags('post')
 @Controller('post')
 export class PostController {
-  constructor(private readonly postService: PostService) {}
+  constructor(
+    private readonly postService: PostService,
+    private readonly aiService: AiService,
+  ) {}
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -32,6 +37,14 @@ export class PostController {
     @Body() createPostDto: CreatePostDto,
   ) {
     return this.postService.create(userId, createPostDto);
+  }
+
+  @Post('generate')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Generate a post draft with AI' })
+  generate(@Body() generatePostDto: GeneratePostDto) {
+    return this.aiService.generatePostDraft(generatePostDto.topic);
   }
 
   @Get()

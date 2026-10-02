@@ -52,6 +52,15 @@ export type CreatePostBody = {
 
 export type UpdatePostBody = Partial<CreatePostBody>;
 
+export type GeneratePostBody = {
+  topic: string;
+};
+
+export type GeneratedPostDraft = {
+  title: string;
+  content: string;
+};
+
 export type Comment = {
   id: number;
   content: string;
