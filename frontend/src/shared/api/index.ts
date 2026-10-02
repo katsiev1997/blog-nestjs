@@ -3,5 +3,8 @@ export * from "./auth";
 export * from "./post";
 export * from "./comment";
 export * from "./user";
+export * from "./like";
+export * from "./chat";
+export * from "./socket";
 export * from "./types";
 export * from "./queries";

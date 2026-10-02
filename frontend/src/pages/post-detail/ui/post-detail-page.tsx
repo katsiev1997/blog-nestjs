@@ -13,6 +13,7 @@ import { useSession } from "@/shared/auth";
 import { estimateReadMinutes, formatPostDate } from "@/shared/lib/format";
 import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
 import { Button } from "@/shared/ui/button";
+import { LikeButton } from "@/shared/ui/like-button";
 import { Separator } from "@/shared/ui/separator";
 import { Skeleton } from "@/shared/ui/skeleton";
 
@@ -148,6 +149,12 @@ export function PostDetailPage() {
         <div className="prose prose-neutral max-w-none whitespace-pre-wrap text-base leading-relaxed">
           {post.content}
         </div>
+        <LikeButton
+          target="post"
+          id={post.id}
+          likeCount={post.likeCount ?? 0}
+          likedByMe={post.likedByMe ?? false}
+        />
       </div>
 
       <Separator />

@@ -4,6 +4,7 @@ import { deleteComment, COMMENT_QUERIES, type Comment } from "@/shared/api";
 import { useSession } from "@/shared/auth";
 import { formatPostDate } from "@/shared/lib/format";
 import { Button } from "@/shared/ui/button";
+import { LikeButton } from "@/shared/ui/like-button";
 import { Textarea } from "@/shared/ui/textarea";
 import { UserAvatar, UserName } from "@/entities/user";
 
@@ -47,6 +48,12 @@ export function CommentItem({
         {comment.content}
       </p>
       <div className="flex items-center gap-2">
+        <LikeButton
+          target="comment"
+          id={comment.id}
+          likeCount={comment.likeCount ?? 0}
+          likedByMe={comment.likedByMe ?? false}
+        />
         {user && onReply ? (
           <Button
             type="button"

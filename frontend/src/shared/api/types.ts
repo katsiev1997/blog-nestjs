@@ -36,6 +36,8 @@ export type Post = {
   userId: number;
   createdAt: string;
   updatedAt: string;
+  likeCount: number;
+  likedByMe: boolean;
 };
 
 export type Paginated<T> = {
@@ -60,6 +62,8 @@ export type Comment = {
   parentId: number | null;
   createdAt: string;
   updatedAt: string;
+  likeCount: number;
+  likedByMe: boolean;
 };
 
 export type CreateCommentBody = {
@@ -79,4 +83,25 @@ export type UpdateUserBody = {
   username?: string;
   password?: string;
   imageUrl?: string | null;
+};
+
+export type LikeToggleResult = {
+  liked: boolean;
+  likeCount: number;
+};
+
+export type ChatMessage = {
+  id: number;
+  chatId: number;
+  senderId: number;
+  content: string;
+  createdAt: string;
+};
+
+export type ChatListItem = {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  peer: PublicUser;
+  lastMessage: ChatMessage | null;
 };

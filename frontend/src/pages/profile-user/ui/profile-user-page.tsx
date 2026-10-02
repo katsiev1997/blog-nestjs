@@ -1,20 +1,31 @@
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router";
 import { PostCard } from "@/entities/post";
-import { POST_QUERIES, USER_QUERIES } from "@/shared/api";
+import { createChat, POST_QUERIES, USER_QUERIES } from "@/shared/api";
+import { useSession } from "@/shared/auth";
 import { getInitials } from "@/shared/lib/format";
 import { Alert, AlertDescription, AlertTitle } from "@/shared/ui/alert";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
+import { Button } from "@/shared/ui/button";
 import { Skeleton } from "@/shared/ui/skeleton";
 
 export function ProfileUserPage() {
   const { id } = useParams();
   const userId = Number(id);
+  const navigate = useNavigate();
+  const { user: me, isAuthenticated } = useSession();
   const userQuery = useQuery({
     ...USER_QUERIES.detail(userId),
     enabled: Number.isFinite(userId),
   });
   const postsQuery = useQuery(POST_QUERIES.list(1));
+
+  const messageMutation = useMutation({
+    mutationFn: () => createChat(userId),
+    onSuccess: (chat) => {
+      navigate(`/chats/${chat.id}`);
+    },
+  });
 
   if (!Number.isFinite(userId)) {
     return (
@@ -41,23 +52,37 @@ export function ProfileUserPage() {
   const user = userQuery.data;
   const posts =
     postsQuery.data?.items.filter((post) => post.userId === user.id) ?? [];
+  const canMessage = isAuthenticated && me?.id !== user.id;
 
   return (
     <div className="flex flex-col gap-8">
-      <section className="flex items-center gap-4">
-        <Avatar className="size-16">
-          {user.imageUrl ? (
-            <AvatarImage src={user.imageUrl} alt={user.name} />
-          ) : null}
-          <AvatarFallback className="text-lg">
-            {getInitials(user.name)}
-          </AvatarFallback>
-        </Avatar>
-        <div className="flex flex-col gap-1">
-          <h1 className="text-3xl font-semibold tracking-tight">{user.name}</h1>
-          <p className="text-muted-foreground text-sm">@{user.username}</p>
-          <p className="text-muted-foreground text-sm">Age {user.age}</p>
+      <section className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <Avatar className="size-16">
+            {user.imageUrl ? (
+              <AvatarImage src={user.imageUrl} alt={user.name} />
+            ) : null}
+            <AvatarFallback className="text-lg">
+              {getInitials(user.name)}
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col gap-1">
+            <h1 className="text-3xl font-semibold tracking-tight">
+              {user.name}
+            </h1>
+            <p className="text-muted-foreground text-sm">@{user.username}</p>
+            <p className="text-muted-foreground text-sm">Age {user.age}</p>
+          </div>
         </div>
+        {canMessage ? (
+          <Button
+            type="button"
+            disabled={messageMutation.isPending}
+            onClick={() => messageMutation.mutate()}
+          >
+            Message
+          </Button>
+        ) : null}
       </section>
 
       <section className="flex flex-col gap-4">

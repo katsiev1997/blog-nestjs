@@ -12,7 +12,9 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import { OptionalCurrentUser } from '../auth/decorators/optional-current-user.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { OptionalJwtAuthGuard } from '../auth/guards/optional-jwt-auth.guard';
 import { CommentService } from './comment.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { FindCommentsQueryDto } from './dto/find-comments-query.dto';
@@ -35,15 +37,27 @@ export class CommentController {
   }
 
   @Get()
+  @UseGuards(OptionalJwtAuthGuard)
   @ApiOperation({ summary: 'List comments for a post (10 per page)' })
-  findAll(@Query() query: FindCommentsQueryDto) {
-    return this.commentService.findAll(query.postId, query.page ?? 1);
+  findAll(
+    @Query() query: FindCommentsQueryDto,
+    @OptionalCurrentUser('sub') viewerId?: number,
+  ) {
+    return this.commentService.findAll(
+      query.postId,
+      query.page ?? 1,
+      viewerId,
+    );
   }
 
   @Get(':id')
+  @UseGuards(OptionalJwtAuthGuard)
   @ApiOperation({ summary: 'Get comment by id' })
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.commentService.findOne(id);
+  findOne(
+    @Param('id', ParseIntPipe) id: number,
+    @OptionalCurrentUser('sub') viewerId?: number,
+  ) {
+    return this.commentService.findOne(id, viewerId);
   }
 
   @Patch(':id')

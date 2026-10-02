@@ -9,6 +9,8 @@ export default [
       route("posts/:id/edit", "routes/posts.$id.edit.tsx"),
       route("profile/me", "routes/profile.me.tsx"),
       route("profile/edit", "routes/profile.edit.tsx"),
+      route("chats", "routes/chats._index.tsx"),
+      route("chats/:id", "routes/chats.$id.tsx"),
     ]),
     route("posts/:id", "routes/posts.$id.tsx"),
     route("users", "routes/users._index.tsx"),
